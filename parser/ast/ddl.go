@@ -2153,10 +2153,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 	switch n.Tp {
 	case TableOptionEngine:
 		ctx.WriteKeyWord("ENGINE")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		if n.StrValue != "" {
 			ctx.WritePlain(n.StrValue)
@@ -2186,10 +2186,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		}
 	case TableOptionCollate:
 		ctx.WriteKeyWord("DEFAULT COLLATE")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteKeyWord(n.StrValue)
 	case TableOptionAutoIncrement:
@@ -2201,10 +2201,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 			ctx.WritePlain(" ")
 		}
 		ctx.WriteKeyWord("AUTO_INCREMENT")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionAutoIdCache:
@@ -2238,92 +2238,92 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		})
 	case TableOptionComment:
 		ctx.WriteKeyWord("COMMENT")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteString(n.StrValue)
 	case TableOptionAvgRowLength:
 		ctx.WriteKeyWord("AVG_ROW_LENGTH")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionCheckSum:
 		ctx.WriteKeyWord("CHECKSUM")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionCompression:
 		ctx.WriteKeyWord("COMPRESSION")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteString(n.StrValue)
 	case TableOptionConnection:
 		ctx.WriteKeyWord("CONNECTION")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteString(n.StrValue)
 	case TableOptionPassword:
 		ctx.WriteKeyWord("PASSWORD")
 		ctx.WritePlain("=")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteString(n.StrValue)
 	case TableOptionKeyBlockSize:
 		ctx.WriteKeyWord("KEY_BLOCK_SIZE")
 		ctx.WritePlain("=")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionMaxRows:
 		ctx.WriteKeyWord("MAX_ROWS")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionMinRows:
 		ctx.WriteKeyWord("MIN_ROWS")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionDelayKeyWrite:
 		ctx.WriteKeyWord("DELAY_KEY_WRITE")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionRowFormat:
 		ctx.WriteKeyWord("ROW_FORMAT")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		switch n.UintValue {
 		case RowFormatDefault:
@@ -2360,19 +2360,19 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 	case TableOptionStatsPersistent:
 		// TODO: not support
 		ctx.WriteKeyWord("STATS_PERSISTENT")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteKeyWord("DEFAULT")
 		ctx.WritePlain(" /* TableOptionStatsPersistent is not supported */ ")
 	case TableOptionStatsAutoRecalc:
 		ctx.WriteKeyWord("STATS_AUTO_RECALC")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		if n.Default {
 			ctx.WriteKeyWord("DEFAULT")
@@ -2394,43 +2394,43 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 	case TableOptionPackKeys:
 		// TODO: not support
 		ctx.WriteKeyWord("PACK_KEYS")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteKeyWord("DEFAULT")
 		ctx.WritePlain(" /* TableOptionPackKeys is not supported */ ")
 	case TableOptionTablespace:
 		ctx.WriteKeyWord("TABLESPACE")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteName(n.StrValue)
 	case TableOptionNodegroup:
 		ctx.WriteKeyWord("NODEGROUP")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionDataDirectory:
 		ctx.WriteKeyWord("DATA DIRECTORY")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteString(n.StrValue)
 	case TableOptionIndexDirectory:
 		ctx.WriteKeyWord("INDEX DIRECTORY")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteString(n.StrValue)
 	case TableOptionStorageMedia:
@@ -2438,10 +2438,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		ctx.WriteKeyWord(n.StrValue)
 	case TableOptionStatsSamplePages:
 		ctx.WriteKeyWord("STATS_SAMPLE_PAGES")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		if n.Default {
 			ctx.WriteKeyWord("DEFAULT")
@@ -2450,42 +2450,42 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		}
 	case TableOptionSecondaryEngine:
 		ctx.WriteKeyWord("SECONDARY_ENGINE")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteString(n.StrValue)
 	case TableOptionSecondaryEngineNull:
 		ctx.WriteKeyWord("SECONDARY_ENGINE")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteKeyWord("NULL")
 	case TableOptionInsertMethod:
 		ctx.WriteKeyWord("INSERT_METHOD")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteKeyWord(n.StrValue)
 	case TableOptionTableCheckSum:
 		ctx.WriteKeyWord("TABLE_CHECKSUM")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlainf("%d", n.UintValue)
 	case TableOptionUnion:
 		ctx.WriteKeyWord("UNION")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WritePlain("(")
 		for i, tableName := range n.TableNames {
@@ -2497,10 +2497,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		ctx.WritePlain(")")
 	case TableOptionEncryption:
 		ctx.WriteKeyWord("ENCRYPTION")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		ctx.WriteString(n.StrValue)
 	case TableOptionPlacementPolicy:
@@ -2515,10 +2515,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		return placementOpt.Restore(ctx)
 	case TableOptionStatsBuckets:
 		ctx.WriteKeyWord("STATS_BUCKETS")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		if n.Default {
 			ctx.WriteKeyWord("DEFAULT")
@@ -2527,10 +2527,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		}
 	case TableOptionStatsTopN:
 		ctx.WriteKeyWord("STATS_TOPN")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		if n.Default {
 			ctx.WriteKeyWord("DEFAULT")
@@ -2539,10 +2539,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		}
 	case TableOptionStatsSampleRate:
 		ctx.WriteKeyWord("STATS_SAMPLE_RATE")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		if n.Default {
 			ctx.WriteKeyWord("DEFAULT")
@@ -2551,10 +2551,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		}
 	case TableOptionStatsColsChoice:
 		ctx.WriteKeyWord("STATS_COL_CHOICE")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		if n.Default {
 			ctx.WriteKeyWord("DEFAULT")
@@ -2563,10 +2563,10 @@ func (n *TableOption) Restore(ctx *format.RestoreCtx) error {
 		}
 	case TableOptionStatsColList:
 		ctx.WriteKeyWord("STATS_COL_LIST")
-		if !ctx.Flags.HasPrettyFormatFlag() {
-			ctx.WritePlain(" = ")
-		} else {
+		if ctx.Flags.HasPrettyFormatFlag() {
 			ctx.WritePlain("=")
+		} else {
+			ctx.WritePlain(" = ")
 		}
 		if n.Default {
 			ctx.WriteKeyWord("DEFAULT")
