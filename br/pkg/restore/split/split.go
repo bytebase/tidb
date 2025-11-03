@@ -15,7 +15,6 @@ import (
 	berrors "github.com/pingcap/tidb/br/pkg/errors"
 	"github.com/pingcap/tidb/br/pkg/logutil"
 	"github.com/pingcap/tidb/br/pkg/utils"
-	"github.com/pingcap/tidb/pkg/lightning/config"
 	"github.com/pingcap/tidb/pkg/util/codec"
 	"github.com/pingcap/tidb/pkg/util/redact"
 	"github.com/tikv/pd/client/opt"
@@ -23,7 +22,7 @@ import (
 )
 
 var (
-	WaitRegionOnlineAttemptTimes = config.DefaultRegionCheckBackoffLimit
+	WaitRegionOnlineAttemptTimes = 3
 	SplitRetryTimes              = 150
 )
 
