@@ -29,7 +29,6 @@ import (
 	"github.com/pingcap/errors"
 	"github.com/pingcap/log"
 	"github.com/pingcap/tidb/pkg/util/tracing"
-	"github.com/tikv/client-go/v2/tikv"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"golang.org/x/net/http/httpproxy"
@@ -171,7 +170,6 @@ func InitLogger(cfg *LogConfig, opts ...zap.Option) error {
 	}
 
 	initGRPCLogger(gl)
-	tikv.SetLogContextKey(CtxLogKey)
 	return nil
 }
 
